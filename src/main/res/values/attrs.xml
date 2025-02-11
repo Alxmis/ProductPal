@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="Theme">
+        <!-- Определяем атрибуты цвета -->
+        <attr name="colorBackground" format="color"/>
+        <attr name="colorSurface" format="color"/>
+        <attr name="colorOnSurface" format="color"/>
+        <attr name="colorPrimary" format="color"/>
+        <attr name="colorSecondary" format="color"/>
+    </declare-styleable>
+</resources>

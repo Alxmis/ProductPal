@@ -1,3 +1,4 @@
+
 package com.example.myapplication.database
 
 import androidx.room.Entity
@@ -8,5 +9,5 @@ data class User(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val login: String,
     val name: String,
-    val password: String
+    val password: String,
 )

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_page1"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="Page 1"/>
+
+    <item
+        android:id="@+id/nav_page2"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:title="Page 2"/>
+
+    <item
+        android:id="@+id/nav_page3"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="Page 3"/>
+
+    <item
+        android:id="@+id/nav_page4"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:title="Page 4"/>
+</menu>
