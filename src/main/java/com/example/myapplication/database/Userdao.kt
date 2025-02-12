@@ -19,11 +19,11 @@ interface UserDao {
     fun getUserByLogin(login: String): User?
 
     @Query("SELECT * FROM users")
-    fun getAllUsers(): List<User> // Новый метод
+    fun getAllUsers(): List<User>
 
     @Delete
-    fun delete(user: User)  // Метод для удаления пользователя
+    fun delete(user: User)
 
     @Update
-    suspend fun updateUser(user: User) // Ensure you have this method
+    suspend fun updateUser(user: User)
 }

@@ -30,7 +30,6 @@ class RegisterFragment : Fragment() {
         val db = AppDatabase.getInstance(requireContext())
         val userDao = db.userDao()
 
-        // Просмотр пароля (значок глаза)
         binding.showPassword.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
             binding.password.inputType = if (isPasswordVisible) {

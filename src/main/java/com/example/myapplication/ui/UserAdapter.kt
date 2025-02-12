@@ -27,12 +27,10 @@ class UserAdapter(
         fun bind(user: User) {
             binding.userInfo.text = "Логин: ${user.login}"
 
-            // Handle delete button click
             binding.deleteButton.setOnClickListener {
                 onDeleteClick(user)
             }
 
-            // Handle edit button click
             binding.editButton.setOnClickListener {
                 onEditClick(user)
             }

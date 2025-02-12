@@ -6,7 +6,6 @@
     android:padding="16dp"
     android:gravity="center">
 
-    <!-- Поле для ввода Telegram логина -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +27,6 @@
             android:inputType="textPersonName"/>
     </LinearLayout>
 
-    <!-- Поле для ввода года рождения -->
     <EditText
         android:id="@+id/birthYear"
         android:layout_width="match_parent"
@@ -37,7 +35,6 @@
         android:inputType="number"
         android:layout_marginTop="10dp"/>
 
-    <!-- Поле для ввода пароля -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +58,6 @@
             android:padding="8dp"/>
     </LinearLayout>
 
-    <!-- Кнопка регистрации -->
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
@@ -69,7 +65,6 @@
         android:text="Регистрация"
         android:layout_marginTop="20dp"/>
 
-    <!-- Переключение темы (Светлая/Темная) -->
     <Switch
         android:id="@+id/themeSwitch"
         android:layout_width="wrap_content"

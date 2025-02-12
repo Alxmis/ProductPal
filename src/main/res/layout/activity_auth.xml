@@ -3,7 +3,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- ViewPager2 for Fragments (Login/Register) -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,7 +13,6 @@
             android:layout_height="match_parent"/>
     </FrameLayout>
 
-    <!-- TabLayout for Switching between Login and Registration -->
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"

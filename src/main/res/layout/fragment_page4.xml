@@ -1,13 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/productNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Page 1"
-        android:textSize="24sp"/>
+        android:hint="Название продукта"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/expirationDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Дата истечения (ДД.ММ.ГГГГ)"
+        android:inputType="date"/>
+
+    <EditText
+        android:id="@+id/caloriesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Калории (ккал)"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/quantityEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Количество (шт)"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/scannerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сканировать штрихкод"/>
+
+    <Button
+        android:id="@+id/saveProductButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сохранить продукт"
+        android:enabled="false"/>
+
 </LinearLayout>

@@ -7,7 +7,6 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
 
-        <!-- AuthActivity - Entry point of the app with DayNight theme -->
         <activity
             android:name=".ui.AuthActivity"
             android:exported="true"
@@ -18,7 +17,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Other activities using the custom theme -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -26,7 +24,6 @@
 
         <activity android:name=".ui.AdminActivity" />
 
-        <!-- Remove LoginActivity and RegisterActivity if not needed -->
         <!-- <activity
             android:name=".ui.LoginActivity"
             android:exported="false"

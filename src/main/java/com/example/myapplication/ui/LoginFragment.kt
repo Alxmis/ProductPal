@@ -39,21 +39,17 @@ class LoginFragment : Fragment() {
         userDao = db.userDao()
         sharedPreferences = requireActivity().getSharedPreferences("app_prefs", 0)
 
-        // Retrieve current theme preference and apply it
         val isDarkMode = sharedPreferences.getBoolean("dark_mode", false)
         binding.themeSwitch.isChecked = isDarkMode
         Log.d("LoginFragment", "Current theme: Dark Mode is ${isDarkMode}")
 
-        // Handle theme toggle and apply changes
         binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
             val mode = if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
             AppCompatDelegate.setDefaultNightMode(mode)
             Log.d("LoginFragment", "Theme switched to: ${if (isChecked) "Dark" else "Light"}")
 
-            // Save the theme preference
             sharedPreferences.edit().putBoolean("dark_mode", isChecked).apply()
 
-            // Restart the activity to apply theme changes immediately
             requireActivity().recreate()
         }
 
@@ -74,7 +70,6 @@ class LoginFragment : Fragment() {
 
             Log.d("LoginFragment", "Login attempt: $login")
 
-            // Ensure fields are not empty
             if (login.isEmpty() || password.isEmpty()) {
                 Log.d("LoginFragment", "Login or password is empty")
                 Toast.makeText(requireContext(), "Заполните все поля!", Toast.LENGTH_SHORT).show()
@@ -85,10 +80,8 @@ class LoginFragment : Fragment() {
                 Log.d("LoginFragment", "Admin login successful")
                 Toast.makeText(requireContext(), "Добро пожаловать, Администратор!", Toast.LENGTH_SHORT).show()
 
-                // Call `addAdminTab()` from AuthActivity
                 (activity as? AuthActivity)?.addAdminTab()
             } else {
-                // Regular user login
                 Log.d("LoginFragment", "Checking user credentials in database for: $login")
                 lifecycleScope.launch(Dispatchers.IO) {
                     val user = userDao.authenticate(login, password)

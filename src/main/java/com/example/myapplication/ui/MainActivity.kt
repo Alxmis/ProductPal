@@ -13,35 +13,60 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
-class MainActivity : ComponentActivity() {
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.example.myapplication.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.viewpager2.adapter.FragmentStateAdapter
+
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var viewPager2: ViewPager2
+    private lateinit var fragmentAdapter: FragmentStateAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            MyApplicationTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+        setContentView(R.layout.activity_dashboard)
+
+        viewPager2 = findViewById(R.id.dashboard_fragment_container)
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+
+        fragmentAdapter = MyFragmentStateAdapter(this)
+        viewPager2.adapter = fragmentAdapter
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_page1 -> {
+                    viewPager2.currentItem = 0
+                    true
                 }
+                R.id.nav_page2 -> {
+                    viewPager2.currentItem = 1
+                    true
+                }
+                R.id.nav_page3 -> {
+                    viewPager2.currentItem = 2
+                    true
+                }
+                R.id.nav_page4 -> {
+                    viewPager2.currentItem = 3
+                    true
+                }
+                else -> false
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
+        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                bottomNavigationView.selectedItemId = when (position) {
+                    0 -> R.id.nav_page1
+                    1 -> R.id.nav_page2
+                    2 -> R.id.nav_page3
+                    3 -> R.id.nav_page4
+                    else -> throw IllegalStateException("Unexpected position $position")
+                }
+            }
+        })
     }
 }

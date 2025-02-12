@@ -13,7 +13,7 @@ class AuthPagerAdapter(activity: AuthActivity) : FragmentStateAdapter(activity) 
     }
 
     fun addAdminTab() {
-        fragments.add(AdminFragment()) // Add AdminFragment
-        notifyItemInserted(fragments.size - 1) // Refresh ViewPager2
+        fragments.add(AdminFragment())
+        notifyItemInserted(fragments.size - 1)
     }
 }

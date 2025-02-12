@@ -11,7 +11,7 @@ import android.util.Log
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding
     private lateinit var adapter: AuthPagerAdapter
-    private var isAdminTabAdded = false // Prevent multiple admin tabs
+    private var isAdminTabAdded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class AuthActivity : AppCompatActivity() {
         adapter = AuthPagerAdapter(this)
         binding.viewPager.adapter = adapter
 
-        setupTabs() // Initial tab setup
+        setupTabs()
     }
 
     private fun setupTabs() {
@@ -36,14 +36,13 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun addAdminTab() {
-        if (!isAdminTabAdded) { // Prevent duplicate tabs
+        if (!isAdminTabAdded) {
             Log.d("AuthActivity", "Adding Admin Tab")
 
-            adapter.addAdminTab() // Modify adapter
-            binding.viewPager.adapter = adapter // Refresh ViewPager2
+            adapter.addAdminTab()
+            binding.viewPager.adapter = adapter
             isAdminTabAdded = true
 
-            // Reset TabLayout
             setupTabs()
         }
     }
