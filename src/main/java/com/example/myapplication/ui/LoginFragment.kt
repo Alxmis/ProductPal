@@ -70,6 +70,7 @@ class LoginFragment : Fragment() {
 
             Log.d("LoginFragment", "Login attempt: $login")
 
+            // Ensure fields are not empty
             if (login.isEmpty() || password.isEmpty()) {
                 Log.d("LoginFragment", "Login or password is empty")
                 Toast.makeText(requireContext(), "Заполните все поля!", Toast.LENGTH_SHORT).show()

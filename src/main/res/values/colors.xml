@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Цвета для светлой и темной темы -->
     <color name="purple_500">#6200EE</color>
     <color name="purple_700">#3700B3</color>
     <color name="teal_200">#03DAC5</color>
@@ -7,13 +8,16 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="red">#FF0000</color>
-    <color name="dark_gray">#A9A9A9</color>
+    <!-- Недостающие цвета -->
+    <color name="red">#FF0000</color> <!-- Цвет красный -->
+    <color name="dark_gray">#A9A9A9</color> <!-- Темно-серый цвет -->
 
+    <!-- Для светлой темы -->
     <color name="colorBackgroundLight">#FFFFFF</color>
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorOnSurface">#000000</color>
 
+    <!-- Для темной темы -->
     <color name="colorBackgroundDark">#121212</color>
 </resources>
 

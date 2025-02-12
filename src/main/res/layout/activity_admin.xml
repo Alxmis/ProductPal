@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- TextView for admin welcome message -->
     <TextView
         android:id="@+id/adminMessageTextView"
         android:layout_width="wrap_content"
@@ -14,6 +15,7 @@
         android:textColor="@android:color/black"
         android:padding="16dp" />
 
+    <!-- RecyclerView to show a list of users -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"

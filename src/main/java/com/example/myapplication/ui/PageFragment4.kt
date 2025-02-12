@@ -20,6 +20,7 @@ import com.google.zxing.integration.android.IntentResult
 import android.content.Intent
 import java.text.SimpleDateFormat
 import java.util.Locale
+import androidx.lifecycle.ViewModelProvider
 
 
 class PageFragment4 : Fragment() {
@@ -31,12 +32,15 @@ class PageFragment4 : Fragment() {
     private lateinit var saveProductButton: Button
     private lateinit var scannerButton: Button
 
-    private var productList = mutableListOf<Product>()
+//    private var productList = mutableListOf<Product>()
+    private lateinit var productViewModel: ProductViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentPage4Binding.inflate(inflater, container, false)
+
+        productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
 
         productNameEditText = binding.productNameEditText
         expirationDateEditText = binding.expirationDateEditText
@@ -77,6 +81,7 @@ class PageFragment4 : Fragment() {
             }
         })
 
+//        // Enable save button when all fields are valid
 //        productNameEditText.addTextChangedListener { validateInput() }
 //        expirationDateEditText.addTextChangedListener { validateInput() }
 //        caloriesEditText.addTextChangedListener { validateInput() }
@@ -109,14 +114,6 @@ class PageFragment4 : Fragment() {
             if (expirationDateEditText.text.isBlank()) {
                 expirationDateEditText.error = "Expiration date is required"
             }
-
-            if (caloriesEditText.text.isBlank()) {
-                caloriesEditText.error = "Calories are required"
-            }
-
-            if (quantityEditText.text.isBlank()) {
-                quantityEditText.error = "Quantity is required"
-            }
         }
     }
 
@@ -138,7 +135,7 @@ class PageFragment4 : Fragment() {
         }
 
         val product = Product(name = name, expirationDate = expirationDate, calories = calories, quantity = quantity)
-        productList.add(product)
+        productViewModel.addProduct(product)
 
         Toast.makeText(requireContext(), "Продукт сохранен!", Toast.LENGTH_SHORT).show()
     }
@@ -159,6 +156,7 @@ class PageFragment4 : Fragment() {
         integrator.initiateScan()
     }
 
+    // Handle barcode scan result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result: IntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {

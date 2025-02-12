@@ -25,12 +25,14 @@ class RegisterActivity : AppCompatActivity() {
         val db = AppDatabase.getInstance(this)
         val userDao = db.userDao()
 
+        // Переключение темы
         binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
             isDarkMode = isChecked
             setTheme(if (isDarkMode) android.R.style.ThemeOverlay_Material_Dark else android.R.style.ThemeOverlay_Material_Light)
             recreate()
         }
 
+        // Добавление "@" к логину
         binding.login.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus) {
                 val loginText = binding.login.text.toString().trim()
@@ -40,6 +42,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+        // Просмотр пароля (переключение значка глаза)
         binding.showPassword.setOnClickListener {
             isPasswordVisible = !isPasswordVisible
             binding.password.inputType = if (isPasswordVisible) {

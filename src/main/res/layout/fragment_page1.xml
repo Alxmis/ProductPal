@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Product Name -->
     <EditText
         android:id="@+id/productNameEditText"
         android:layout_width="match_parent"
@@ -12,6 +13,7 @@
         android:hint="Название продукта"
         android:inputType="text"/>
 
+    <!-- Product Quantity -->
     <EditText
         android:id="@+id/quantityEditText"
         android:layout_width="match_parent"
@@ -20,6 +22,7 @@
         android:inputType="number"
         android:importantForAccessibility="yes"/>
 
+    <!-- Save Button -->
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
@@ -28,6 +31,7 @@
         android:layout_marginTop="16dp"
         android:enabled="false"/>
 
+    <!-- Product List -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/productListRecyclerView"
         android:layout_width="match_parent"

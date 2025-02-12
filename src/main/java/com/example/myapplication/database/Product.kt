@@ -2,8 +2,11 @@ package com.example.myapplication.database
 
 data class Product(
     val name: String = "Unknown",
-    val quantity: Int = 1,
+    var quantity: Int = 1,
     val price: Double = 0.0,
     val expirationDate: Long = 0L,
-    val calories: Int = 0
+    val calories: Int = 0,
+    val icon: Int = 0,
+    var isChecked: Boolean = false,
+    val type: String = "Unknown"
 )

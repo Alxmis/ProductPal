@@ -17,5 +17,5 @@
     <item
         android:id="@+id/nav_page4"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:title="Page 4" />
+        android:title="Профи" />
 </menu>

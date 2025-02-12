@@ -13,11 +13,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.database.Product
 import com.example.myapplication.databinding.FragmentPage2Binding
+import com.example.myapplication.database.Product
 import com.google.zxing.integration.android.IntentIntegrator
 import com.google.zxing.integration.android.IntentResult
 import android.content.Intent
+import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 
 class PageFragment2 : Fragment() {
     private lateinit var saveButton: Button
@@ -27,14 +29,16 @@ class PageFragment2 : Fragment() {
     private lateinit var addProductButton: Button
     private lateinit var totalPriceTextView: TextView
     private lateinit var productListRecyclerView: RecyclerView
-    private val productList = mutableListOf<Product>()
     private lateinit var productAdapter: ProductAdapter
     private var totalPrice = 0.0
+    private lateinit var productViewModel: ProductViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentPage2Binding.inflate(inflater, container, false)
+
+        productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
 
         productNameEditText = binding.productNameEditText
         productPriceEditText = binding.productPriceEditText
@@ -43,12 +47,23 @@ class PageFragment2 : Fragment() {
         totalPriceTextView = binding.totalPriceTextView
         productListRecyclerView = binding.productListRecyclerView
 
-        productAdapter = ProductAdapter(productList) { product ->
-            removeProduct(product)
-        }
+        productAdapter = ProductAdapter(
+            onDelete = { product -> removeProduct(product) },
+            onCheck = { product -> handleCheck(product) },
+            onMinus = { product -> handleMinus(product) },
+            layoutType = PAGE_TYPE_2
+        )
         productListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         productListRecyclerView.adapter = productAdapter
 
+        // Observe changes in product list from ViewModel
+        productViewModel.productList.observe(viewLifecycleOwner, { productList ->
+            Log.d("PageFragment2", "Product list updated, size: ${productList.size}")
+            productAdapter.submitList(productList)
+            productAdapter.notifyDataSetChanged()
+        })
+
+        // Enable add button only when both fields are filled
         productNameEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -77,7 +92,7 @@ class PageFragment2 : Fragment() {
             val quantity = 1
 
             if (price != null) {
-                val product = Product(productName, quantity, price)
+                val product = Product(name = productName, quantity = quantity, price = price)
                 addProduct(product)
             } else {
                 Toast.makeText(requireContext(), "Ошибка: неверная цена", Toast.LENGTH_SHORT).show()
@@ -93,8 +108,9 @@ class PageFragment2 : Fragment() {
     }
 
     private fun addProduct(product: Product) {
-        productAdapter.addProduct(product)
-        totalPrice += product.price.toDouble()
+        Log.d("PageFragment2", "Adding product: ${product.name}, Price: ${product.price}")
+        productViewModel.addProduct(product) // Add product using ViewModel
+        totalPrice += product.price
         totalPriceTextView.text = "Итоговая стоимость: $totalPrice руб"
     }
 
@@ -104,6 +120,7 @@ class PageFragment2 : Fragment() {
         integrator.initiateScan()
     }
 
+    // Handle barcode scan result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val result: IntentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
@@ -123,8 +140,22 @@ class PageFragment2 : Fragment() {
     }
 
     private fun removeProduct(product: Product) {
-        productAdapter.removeProduct(product)
+        Log.d("PageFragment2", "Removing product: ${product.name}")
+        productViewModel.removeProduct(product)
         totalPrice -= product.price
         totalPriceTextView.text = "Итоговая стоимость: $totalPrice руб"
+    }
+
+    private fun handleCheck(product: Product) {
+        Log.d("PageFragment2", "Checking product: ${product.name}")
+        productAdapter.notifyDataSetChanged()
+    }
+
+    private fun handleMinus(product: Product) {
+        Log.d("PageFragment2", "Decreasing quantity for product: ${product.name}")
+        if (product.quantity > 1) {
+            product.quantity -= 1
+            productAdapter.notifyDataSetChanged()
+        }
     }
 }

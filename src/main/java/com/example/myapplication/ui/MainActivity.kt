@@ -18,6 +18,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.myapplication.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import android.content.Intent
+import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,5 +70,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        val settingsButton = findViewById<Button>(R.id.settingsButton)
+        settingsButton.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

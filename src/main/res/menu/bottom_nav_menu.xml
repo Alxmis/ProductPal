@@ -13,5 +13,5 @@
         android:id="@+id/nav_admin"
         android:icon="@android:drawable/ic_menu_manage"
         android:title="Администрация"
-        android:visible="false"/>
+        android:visible="false"/> <!-- Initially hidden -->
 </menu>

@@ -24,6 +24,8 @@
 
         <activity android:name=".ui.AdminActivity" />
 
+        <activity android:name=".ui.SettingsActivity" />
+
         <!-- <activity
             android:name=".ui.LoginActivity"
             android:exported="false"
