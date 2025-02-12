@@ -63,4 +63,6 @@ dependencies {
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
 
     implementation("androidx.activity:activity-ktx:1.3.1")
+
+    implementation("androidx.preference:preference:1.1.1")
 }
