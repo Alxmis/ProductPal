@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="theme">Theme</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="save">Save</string>
+    <string name="font_size">Font Size</string>
+    <string name="select_language">Select Language</string>
+    <string name="russian">RUS</string>
+    <string name="english">ENG</string>
+    <string name="contact_tech_support">Contact Tech Support</string>
+    <string name="product_name_hint">Product Name</string>
+    <string name="expiration_date_hint">Expiration Date (DD.MM.YYYY)</string>
+    <string name="calories_hint">Calories (kcal)</string>
+    <string name="quantity_hint">Quantity (pcs)</string>
+    <string name="scanner_button_text">Scan Barcode</string>
+    <string name="save_product_button_text">Save Product</string>
+    <string name="total_calories_text">Total Calories: 0</string>
+    <string name="product_price_hint">Price (rub)</string>
+    <string name="add_product_button_text">Add</string>
+    <string name="total_price_text">Total Price: 0</string>
+    <string name="save_button_text">Save</string>
+    <string name="nav_page_1">Notes</string>
+    <string name="nav_page_2">Go shopping</string>
+    <string name="nav_page_3">List</string>
+    <string name="nav_page_4">Bag</string>
+    <string name="nav_page_5">Settings</string>
+    <string name="calories_suffix">kcal</string>
+    <string name="quantity_suffix">pcs</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
+    <string name="currency">rub</string>
+    <!-- Добавьте другие строки для вашего приложения -->
+</resources>
