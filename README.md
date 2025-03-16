@@ -1,5 +1,7 @@
 # ProductPal
 
+This project was developed for educational purposes.
+
 ## Overview
 
 This project is an Android application designed to manage user registration, authentication, product notes, product scanning, and various administrative functionalities. The app allows users to create and manage a list of products, including adding new products manually or via a barcode scanner. Users can also manage their settings, including font size, language, and theme preferences.
